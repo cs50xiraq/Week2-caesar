@@ -1,0 +1,43 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main(int argc, char **argv)
+{
+    int i;  
+    string plaintext;
+    if (argc != 2) //check for one command line 
+    {
+        printf("Usage: ./caesar key \n");
+        return 1;
+    }
+    int k = atoi(argv[1]);
+    if (k < 0)//check for the key to be positive
+    {
+        printf("Usage: ./caesar key \n");
+    }
+    plaintext = get_string("plantext : ");//to input the plantext
+    printf("ciphertext:");
+    for (i = 0 ; i < strlen(plaintext); i++)
+    {
+       
+        if (isupper(plaintext[i]))//check for upper car
+        {
+            printf("%c", (plaintext[i] - 'A' + k) % 26 + 'A');
+     
+        }
+        else if (islower(plaintext[i]))
+        {
+            printf("%c", (plaintext[i] - 'a' + k) % 26 + 'a');
+        }
+        else
+        {
+    
+            printf("%c", plaintext[i]);
+        }
+    }
+    printf("\n");
+    
+}
+            
+            
